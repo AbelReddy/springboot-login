@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1 class="title">Welcome Back!</h1>
+            <form method="post" action="/login" >
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" >
+
+                            <span class="error-message" id="username-error"></span>
+
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                            <span class="error-message" id="password-error"></span>
+
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <div class="social-login">
+                    <p>Or login with</p>
+                    <div class="social-buttons">
+                        <button class="social-button facebook">Facebook</button>
+                        <button class="social-button google">Google</button>
+                    </div>
+                </div>
+                <p class="signup-link">Don't have an account? <a href="/req/signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+
+    if (error) {
+        // Assuming "Invalid username or password" is a generic error
+        // Customize the error messages based on your actual needs
+        const usernameError = document.getElementById('username-error');
+        const passwordError = document.getElementById('password-error');
+
+        if (error === 'true') {
+            // You might need to differentiate between username and password errors
+            // For this example, we'll use a generic error message
+            usernameError.textContent = 'Invalid username or password.';
+            passwordError.textContent = '';
+        }
+    }
+});
+	
+	</script>
